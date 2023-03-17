@@ -45,11 +45,7 @@ func PostFinalizedObject(ctx context.Context, e event.GCSEvent) error {
 		name = parts[len(parts)-1]
 	}
 
-	if err := postForm(ctx, name, e.ContentType, r); err != nil {
-		return err
-	}
-
-	return nil
+	return postForm(ctx, name, e.ContentType, r)
 }
 
 func postForm(ctx context.Context, name, contentType string, r io.ReadCloser) error {
